@@ -1,3 +1,4 @@
+// entry point
 var clc = require("cli-color");
 function init(){
     var mapping = {
