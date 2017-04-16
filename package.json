@@ -1,6 +1,6 @@
 {
   "name": "tscconsole",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,9 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/winston": "^2.3.0",
-    "cli-color": "^1.1.0",
-    "scribe-js": "^2.0.4",
-    "winston": "^2.3.1"
+    "scribe-js": "^2.0.4"
   }
 }

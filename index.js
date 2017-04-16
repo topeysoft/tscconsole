@@ -1,8 +1,7 @@
-require('scribe-js')(); //loads Scribe
+var scribe= require('scribe-js')();
 var console = process.console;
 
 function init(app){
-    console.log('APP is ', app);
     if(!app) return;
     app.use(scribe.express.logger());
     app.use('/logs', scribe.webPanel());
