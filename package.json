@@ -1,6 +1,6 @@
 {
-  "name": "tscconsole",
-  "version": "2.0.0",
+  "name": "tsclogger",
+  "version": "2.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
