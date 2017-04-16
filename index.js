@@ -1,43 +1,11 @@
-// entry point
-var winston = require('winston');
-var clc = require("cli-color");
+require('scribe-js')(); //loads Scribe
+var console = process.console;
 
-var logger = new (winston.Logger)({
-  transports: [
-    new (winston.transports.Console)({ json: false, timestamp: true }),
-    new winston.transports.File({ filename: __dirname + '/debug.log', json: false })
-  ],
-  exceptionHandlers: [
-    new (winston.transports.Console)({ json: false, timestamp: true }),
-    new winston.transports.File({ filename: __dirname + '/exceptions.log', json: false })
-  ],
-  exitOnError: false
-});
-
-function init(){
-    var mapping = {
-    log: clc.blue,
-    warn: clc.yellow,
-    error: clc.red,
-    info: clc.green
+function init(app){
+    console.log('APP is ', app);
+    if(!app) return;
+    app.use(scribe.express.logger());
+    app.use('/logs', scribe.webPanel());
 };
-["log", "warn", "error","info"].forEach(function(method) {
-    var oldMethod = console[method].bind(console);
-    console[method] = function() {
-        logger.apply(console,
-            [mapping[method](method.toUpperCase())]
-                .concat(arguments)
-                );
-        oldMethod.apply(
-            console,
-            [mapping[method](method.toUpperCase()+"  "+new Date().toISOString())]
-                .concat(arguments)
-        );
-    };   
-});
-}
-  
+
 exports.init = init;
-exports.logger = logger;
-
-
